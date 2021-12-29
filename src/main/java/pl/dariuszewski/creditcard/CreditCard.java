@@ -17,6 +17,7 @@ public class CreditCard {
             throw new LimitBelowCertainThresholdException();
         }
         this.limit = creditLimit;
+        this.balance = creditLimit;
     }
 
     private boolean isBelowCreditLimit(BigDecimal creditLimit) {
