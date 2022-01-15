@@ -1,22 +1,28 @@
 package pl.dariuszewski.productcatalog;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DatabaseProductStorage implements ProductStorage {
-    @Override
-    public void save(Product product) {
-        //SQL to DB
+
+    private ProductRepository productRepository;
+
+    public DatabaseProductStorage(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     @Override
-    public Product loadById(String productId) {
-        //SQL to DB
-        return null;
+    public void save(Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public Optional<Product> loadById(String productId) {
+        return productRepository.findById(productId);
     }
 
     @Override
     public List<Product> allProducts() {
-        //SQL To DB list
-        return null;
+        return productRepository.findAll();
     }
 }

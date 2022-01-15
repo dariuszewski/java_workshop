@@ -1,7 +1,7 @@
 package pl.dariuszewski.productcatalog;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductCatalog {
@@ -24,13 +24,15 @@ public class ProductCatalog {
     }
 
     public void updatePrice(String productId, BigDecimal price) {
-        Product loaded = productStorage.loadById(productId);
+        Product loaded = productStorage.loadById(productId)
+                .orElseThrow(() -> new ProductDoesNotExistsException());
         loaded.setPrice(price);
         productStorage.save(loaded);
     }
 
     public void publish(String productId) {
-        Product loaded = productStorage.loadById(productId);
+        Product loaded = productStorage.loadById(productId)
+                .orElseThrow(() -> new ProductDoesNotExistsException());
         loaded.publish();
         productStorage.save(loaded);
     }
