@@ -1,13 +1,13 @@
 package pl.dariuszewski;
 
-import org.springframework.context.annotation.Bean;
-import pl.dariuszewski.greetings.Greeter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pl.dariuszewski.productcatalog.DatabaseProductStorage;
-import pl.dariuszewski.productcatalog.ProductCatalog;
-import pl.dariuszewski.productcatalog.InMemoryProductStorage;
-import pl.dariuszewski.productcatalog.ProductStorage;
+import org.springframework.context.annotation.Bean;
+import pl.dariuszewski.greetings.Greeter;
+import pl.dariuszewski.productcatalog.*;
+
+import java.math.BigDecimal;
+import java.util.UUID;
 
 @SpringBootApplication
 public class App {
@@ -16,26 +16,40 @@ public class App {
         Greeter greeter = new Greeter();
         System.out.println(greeter.hello("Darius"));
     }
+
     @Bean
-    Greeter createGreeter() {
+    Greeter createGreater() {
         return new Greeter();
     }
 
     @Bean
-    ProductCatalog createCatalog(InMemoryProductStorage productStorage) { return new ProductCatalog(productStorage); }
+    ProductCatalog createCatalog(ProductStorage productStorage) {
+        ProductCatalog productCatalog = new ProductCatalog(productStorage);
 
-    @Bean
-    DatabaseProductStorage createDbProductStorage() {
-        return null;
+        productCatalog.addProduct(
+                "product-1",
+                "My Nice Picture",
+                "Very nice"
+        );
+
+        productCatalog.updatePrice("product-1", BigDecimal.valueOf(10.10));
+        productCatalog.publish("product-1");
+
+        productCatalog.addProduct(
+                "product-2",
+                "My Nice Picture 2",
+                "Bla bla"
+        );
+
+        productCatalog.updatePrice("product-2", BigDecimal.valueOf(20.10));
+        productCatalog.publish("product-2");
+
+        return productCatalog;
     }
 
     @Bean
-    ProductStorage provideProductStorage() {
-        return null;
+    ProductStorage createDbProductStorage(ProductRepository productRepository) {
+        return new DatabaseProductStorage(productRepository);
     }
 
-    @Bean
-    InMemoryProductStorage createProductStorage() {
-        return new InMemoryProductStorage();
-    }
 }
