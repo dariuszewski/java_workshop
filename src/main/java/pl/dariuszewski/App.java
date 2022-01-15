@@ -26,12 +26,12 @@ public class App {
 
     @Bean
     DatabaseProductStorage createDbProductStorage() {
-        return new DatabaseProductStorage();
+        return null;
     }
 
     @Bean
     ProductStorage provideProductStorage() {
-        return createProductStorage();
+        return null;
     }
 
     @Bean

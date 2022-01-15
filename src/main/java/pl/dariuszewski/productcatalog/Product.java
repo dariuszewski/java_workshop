@@ -1,11 +1,16 @@
 package pl.dariuszewski.productcatalog;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@Entity
 public class Product {
+    @Id
     private String productId;
     private String name;
     private String description;
+    private String imageUrl;
     private BigDecimal price;
     private boolean published;
 
