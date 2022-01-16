@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.dariuszewski.greetings.Greeter;
 import pl.dariuszewski.productcatalog.*;
+import pl.dariuszewski.sales.InMemoryCartStorage;
+import pl.dariuszewski.sales.Product;
+import pl.dariuszewski.sales.ProductDetailsProvider;
+import pl.dariuszewski.sales.SalesFacade;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -50,6 +54,21 @@ public class App {
     @Bean
     ProductStorage createDbProductStorage(ProductRepository productRepository) {
         return new DatabaseProductStorage(productRepository);
+    }
+
+    @Bean
+    SalesFacade createSalesFacade(ProductCatalog productCatalog) {
+        return new SalesFacade(
+                new InMemoryCartStorage(),
+                (productId) -> {
+                    pl.dariuszewski.productcatalog.Product loadedProduct = productCatalog.loadProduct(productId);
+
+                    return new Product(
+                            loadedProduct.getProductId(),
+                            loadedProduct.getName(),
+                            loadedProduct.getPrice()
+                    );
+                });
     }
 
 }
