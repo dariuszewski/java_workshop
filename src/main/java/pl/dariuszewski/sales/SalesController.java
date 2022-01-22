@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.dariuszewski.sales.offerting.Offer;
 
+
 @RestController
 public class SalesController {
-    public static final String CUSTOMER_ID = "Jacob";
+    public static final String CUSTOMER_ID = "Kuba";
 
     private SalesFacade salesFacade;
 
@@ -19,6 +20,12 @@ public class SalesController {
     public void addProductToCart(@PathVariable String productId) {
         String customerId = getCurrentCustomerId();
         salesFacade.addToCart(customerId, productId);
+    }
+
+    @PostMapping("/api/accept-offer")
+    public void acceptOffer() {
+        String customerId = getCurrentCustomerId();
+        salesFacade.acceptOffer(customerId);
     }
 
     @GetMapping("/api/current-offer")

@@ -36,6 +36,7 @@ public class App {
         );
 
         productCatalog.updatePrice("product-1", BigDecimal.valueOf(10.10));
+        productCatalog.assignImage("product-1", "https://picsum.photos/id/103/200/300");
         productCatalog.publish("product-1");
 
         productCatalog.addProduct(
@@ -45,7 +46,18 @@ public class App {
         );
 
         productCatalog.updatePrice("product-2", BigDecimal.valueOf(20.10));
+        productCatalog.assignImage("product-2", "https://picsum.photos/id/102/200/300");
         productCatalog.publish("product-2");
+
+        productCatalog.addProduct(
+                "product-3",
+                "My Nice Picture 3",
+                "Bla bla"
+        );
+
+        productCatalog.updatePrice("product-3", BigDecimal.valueOf(30.10));
+        productCatalog.assignImage("product-3", "https://picsum.photos/id/1062/200/300");
+        productCatalog.publish("product-3");
 
         return productCatalog;
     }
@@ -73,4 +85,5 @@ public class App {
                 new OfferMaker(productDetailsProvider)
         );
     }
+
 }
