@@ -41,4 +41,11 @@ public class ProductCatalog {
         return productStorage.loadById(productId)
                 .orElseThrow(() -> new ProductDoesNotExistsException());
     }
+
+    public void assignImage(String productId, String productImage) {
+        Product loaded = productStorage.loadById(productId)
+                .orElseThrow(() -> new ProductDoesNotExistsException());
+        loaded.setImageUrl(productImage);
+        productStorage.save(loaded);
+    }
 }

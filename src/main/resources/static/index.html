@@ -1,13 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>My Ecommerce</title>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
 <h1>My Ecommerce</h1>
+<header>
+    <div class="offer">
+        Total: <span class="offer__total">0 PLN</span>
+        Items count: <span class="offer__items-count">0</span>
+
+        <button id="checkout">CHECKOUT</button>
+    </div>
+</header>
 <main>
-    <ul class="products__list">
-        <button>Add To Cart</button>
-    </ul>
+    <ul id="products" class="products__list"></ul>
 </main>
 <script type="text/javascript" src="/js/main.js"></script>
 </body>

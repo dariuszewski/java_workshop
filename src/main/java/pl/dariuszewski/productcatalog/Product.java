@@ -31,13 +31,6 @@ public class Product {
         this.published = false;
     }
 
-    public Product(String productId, String name, BigDecimal price) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
-        this.published = false;
-    }
-
     public String getProductId() {
         return productId;
     }
@@ -64,5 +57,13 @@ public class Product {
 
     public boolean isPublished() {
         return published;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

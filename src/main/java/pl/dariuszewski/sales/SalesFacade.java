@@ -38,4 +38,8 @@ public class SalesFacade {
 
         return offerMaker.createAnOffer(cart);
     }
+
+    public void acceptOffer(String customerId) {
+
+    }
 }
