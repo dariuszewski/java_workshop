@@ -1,4 +1,4 @@
-package pl.dariuszewski.offerting;
+package pl.dariuszewski.sales.offerting;
 
 import org.junit.jupiter.api.Test;
 

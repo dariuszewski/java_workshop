@@ -12,12 +12,13 @@ import pl.dariuszewski.sales.offerting.OfferMaker;
 
 import java.math.BigDecimal;
 
+
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
         Greeter greeter = new Greeter();
-        System.out.println(greeter.hello("Darius"));
+        System.out.println(greeter.hello("Kuba"));
     }
 
     @Bean
@@ -82,7 +83,9 @@ public class App {
         return new SalesFacade(
                 new InMemoryCartStorage(),
                 productDetailsProvider,
-                new OfferMaker(productDetailsProvider)
+                new OfferMaker(productDetailsProvider),
+                new DummyPaymentGateway(),
+                new InMemoryReservationStorage()
         );
     }
 

@@ -41,7 +41,7 @@ public class CollectingProductsTest {
     @Test
     void itAllowsToAddMultipleProductsToCart() {
         //Arrange
-        String customerId = thereIsCustomer("Jacob");
+        String customerId = thereIsCustomer("Kuba");
         String productId1 = thereIsProduct("product-1");
         String productId2 = thereIsProduct("product-2");
         SalesFacade sales = thereIsSalesModule();
@@ -57,7 +57,7 @@ public class CollectingProductsTest {
     @Test
     void itIncreaseProductQuantityForTheSameProductAddedTwice() {
         //Arrange
-        String customerId = thereIsCustomer("Jacob");
+        String customerId = thereIsCustomer("Kuba");
         String productId1 = thereIsProduct("product-1");
         SalesFacade sales = thereIsSalesModule();
 
@@ -66,7 +66,7 @@ public class CollectingProductsTest {
         sales.addToCart(customerId, productId1);
 
         //Assert
-        thereIsXProductInCustomersCart(2, customerId);
+        thereIsXProductInCustomersCart(1, customerId);
         quantityOfProductXProductInCustomersCartEquals(productId1, customerId, 2);
     }
 
@@ -93,7 +93,7 @@ public class CollectingProductsTest {
 
     private SalesFacade thereIsSalesModule() {
 
-        return new SalesFacade(cartStorage, productDetailsProvider, new OfferMaker(productDetailsProvider));
+        return new SalesFacade(cartStorage, productDetailsProvider, new OfferMaker(productDetailsProvider), new DummyPaymentGateway(), new InMemoryReservationStorage());
     }
 
     private String thereIsProduct(String productId) {
