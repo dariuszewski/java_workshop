@@ -66,7 +66,7 @@ public class CollectingProductsTest {
         sales.addToCart(customerId, productId1);
 
         //Assert
-        thereIsXProductInCustomersCart(1, customerId);
+        thereIsXProductInCustomersCart(2, customerId);
         quantityOfProductXProductInCustomersCartEquals(productId1, customerId, 2);
     }
 
