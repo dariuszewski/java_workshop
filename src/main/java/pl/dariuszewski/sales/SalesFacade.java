@@ -1,11 +1,11 @@
 package pl.dariuszewski.sales;
 
 
-import pl.dariuszewski.productcatalog.DatabaseProductStorage;
 import pl.dariuszewski.sales.cart.Cart;
 import pl.dariuszewski.sales.cart.InMemoryCartStorage;
 import pl.dariuszewski.sales.offerting.Offer;
 import pl.dariuszewski.sales.offerting.OfferMaker;
+import pl.dariuszewski.sales.ordering.*;
 
 
 public class SalesFacade {
@@ -13,14 +13,14 @@ public class SalesFacade {
     private ProductDetailsProvider productDetailsProvider;
     private OfferMaker offerMaker;
     private PaymentGateway paymentGateway;
-    private InMemoryReservationStorage reservationStorage;
+    private ReservationStorage reservationStorage;
 
     public SalesFacade(
             InMemoryCartStorage cartStorage,
             ProductDetailsProvider productDetailsProvider,
             OfferMaker offerMaker,
             PaymentGateway paymentGateway,
-            InMemoryReservationStorage reservationStorage
+            ReservationStorage reservationStorage
     ) {
         this.cartStorage = cartStorage;
         this.productDetailsProvider = productDetailsProvider;

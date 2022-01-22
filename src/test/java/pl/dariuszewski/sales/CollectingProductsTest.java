@@ -6,6 +6,8 @@ import pl.dariuszewski.sales.cart.Cart;
 import pl.dariuszewski.sales.cart.CartItem;
 import pl.dariuszewski.sales.cart.InMemoryCartStorage;
 import pl.dariuszewski.sales.offerting.OfferMaker;
+import pl.dariuszewski.sales.ordering.DummyPaymentGateway;
+import pl.dariuszewski.sales.ordering.InMemoryReservationStorage;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

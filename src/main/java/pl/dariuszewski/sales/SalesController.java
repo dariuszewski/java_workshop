@@ -1,12 +1,12 @@
 package pl.dariuszewski.sales;
 
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.dariuszewski.sales.offerting.Offer;
+import pl.dariuszewski.sales.ordering.CustomerData;
 
 @RestController
 public class SalesController {
-    public static final String CUSTOMER_ID = "Kuba";
+    public static final String CUSTOMER_ID = "Darius";
 
     private SalesFacade salesFacade;
 

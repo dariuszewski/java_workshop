@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import pl.dariuszewski.sales.cart.InMemoryCartStorage;
 import pl.dariuszewski.sales.offerting.Offer;
 import pl.dariuszewski.sales.offerting.OfferMaker;
+import pl.dariuszewski.sales.ordering.DummyPaymentGateway;
+import pl.dariuszewski.sales.ordering.InMemoryReservationStorage;
 
 import static org.junit.jupiter.api.Assertions.*;
 

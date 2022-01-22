@@ -1,4 +1,4 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.ordering;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -10,4 +10,3 @@ public class DummyPaymentGateway implements PaymentGateway {
         return new PaymentDetails(UUID.randomUUID().toString(), "http://dummygateway.com/" + reservationId);
     }
 }
-

@@ -1,21 +1,35 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.ordering;
 
 import pl.dariuszewski.sales.cart.CartItem;
 import pl.dariuszewski.sales.offerting.Offer;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
+@Entity
 public class Reservation {
-    private final String id;
-    private final BigDecimal total;
-    private final CustomerDetails customerDetails;
-    private final List<ReservationLine> lines;
+    @Id
+    private String id;
+    private BigDecimal total;
+
+    @Embedded
+    private CustomerDetails customerDetails;
+    @Embedded
     private PaymentDetails paymentDetails;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<ReservationLine> lines;
     private Instant paidAt;
+
+    Reservation() {}
 
     public Reservation(String id, BigDecimal total, CustomerDetails customerDetails, List<ReservationLine> lines) {
         this.id = id;

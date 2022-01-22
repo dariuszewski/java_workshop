@@ -1,8 +1,14 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.ordering;
 
+
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PaymentDetails {
-    private final String paymentId;
-    private final String url;
+    private String paymentId;
+    private String url;
+
+    PaymentDetails() {};
 
     public PaymentDetails(String paymentId, String url) {
         this.paymentId = paymentId;

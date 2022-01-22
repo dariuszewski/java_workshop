@@ -1,4 +1,4 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.ordering;
 
 public class ReservationDetails {
     private final String reservationId;
