@@ -36,4 +36,9 @@ public class ProductCatalog {
         loaded.publish();
         productStorage.save(loaded);
     }
+
+    public Product loadProduct(String productId) {
+        return productStorage.loadById(productId)
+                .orElseThrow(() -> new ProductDoesNotExistsException());
+    }
 }
