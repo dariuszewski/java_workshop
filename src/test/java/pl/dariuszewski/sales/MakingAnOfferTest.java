@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.dariuszewski.sales.cart.InMemoryCartStorage;
 import pl.dariuszewski.sales.offerting.Offer;
-import pl.dariuszewski.sales.cart.InMemoryCartStorage;
-import pl.dariuszewski.sales.offerting.Offer;
 import pl.dariuszewski.sales.offerting.OfferMaker;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +24,7 @@ public class MakingAnOfferTest {
     @Test
     void itGeneratesNewOfferBasedOnBasketItems() {
         //Arrange
-        String customerId = thereIsCustomer("Jacob");
+        String customerId = thereIsCustomer("Kuba");
         String productId = thereIsProduct("product-1", BigDecimal.valueOf(10.10));
         SalesFacade sales = thereIsSalesModule();
 
@@ -55,7 +53,8 @@ public class MakingAnOfferTest {
         return new SalesFacade(
                 cartStorage,
                 productDetailsProvider,
-                new OfferMaker(productDetailsProvider));
+                new OfferMaker(productDetailsProvider),
+                new DummyPaymentGateway(),
+                new InMemoryReservationStorage());
     }
 }
-

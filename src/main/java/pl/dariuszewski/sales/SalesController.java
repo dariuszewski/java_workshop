@@ -1,10 +1,8 @@
 package pl.dariuszewski.sales;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import pl.dariuszewski.sales.offerting.Offer;
 
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import pl.dariuszewski.sales.offerting.Offer;
 
 @RestController
 public class SalesController {
@@ -23,9 +21,9 @@ public class SalesController {
     }
 
     @PostMapping("/api/accept-offer")
-    public void acceptOffer() {
+    public void acceptOffer(@RequestBody CustomerData customerData) {
         String customerId = getCurrentCustomerId();
-        salesFacade.acceptOffer(customerId);
+        salesFacade.acceptOffer(customerId, customerData);
     }
 
     @GetMapping("/api/current-offer")
