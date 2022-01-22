@@ -20,7 +20,7 @@ public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
         Greeter greeter = new Greeter();
-        System.out.println(greeter.hello("Kuba"));
+        System.out.println(greeter.hello("Darius"));
     }
 
     @Bean
