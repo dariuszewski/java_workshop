@@ -1,11 +1,10 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.cart;
 
 import pl.dariuszewski.sales.Product;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cart {
 
@@ -28,6 +27,8 @@ public class Cart {
     }
 
     public List<CartItem> getItems() {
-        return Collections.emptyList();
+        return products.stream()
+                .map(p -> new CartItem(p.getProductId(), 1))
+                .collect(Collectors.toList());
     }
 }

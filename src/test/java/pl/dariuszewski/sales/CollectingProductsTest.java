@@ -2,6 +2,10 @@ package pl.dariuszewski.sales;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.dariuszewski.sales.cart.Cart;
+import pl.dariuszewski.sales.cart.CartItem;
+import pl.dariuszewski.sales.cart.InMemoryCartStorage;
+import pl.dariuszewski.sales.offerting.OfferMaker;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -37,7 +41,7 @@ public class CollectingProductsTest {
     @Test
     void itAllowsToAddMultipleProductsToCart() {
         //Arrange
-        String customerId = thereIsCustomer("Kuba");
+        String customerId = thereIsCustomer("Jacob");
         String productId1 = thereIsProduct("product-1");
         String productId2 = thereIsProduct("product-2");
         SalesFacade sales = thereIsSalesModule();
@@ -53,7 +57,7 @@ public class CollectingProductsTest {
     @Test
     void itIncreaseProductQuantityForTheSameProductAddedTwice() {
         //Arrange
-        String customerId = thereIsCustomer("Kuba");
+        String customerId = thereIsCustomer("Jacob");
         String productId1 = thereIsProduct("product-1");
         SalesFacade sales = thereIsSalesModule();
 
@@ -89,7 +93,7 @@ public class CollectingProductsTest {
 
     private SalesFacade thereIsSalesModule() {
 
-        return new SalesFacade(cartStorage, productDetailsProvider);
+        return new SalesFacade(cartStorage, productDetailsProvider, new OfferMaker(productDetailsProvider));
     }
 
     private String thereIsProduct(String productId) {

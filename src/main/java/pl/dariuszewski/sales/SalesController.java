@@ -1,14 +1,13 @@
 package pl.dariuszewski.sales;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.dariuszewski.sales.offerting.Offer;
 
 @RestController
 public class SalesController {
-
-    public static final String CUSTOMER_ID = "Darius";
+    public static final String CUSTOMER_ID = "Jacob";
 
     private SalesFacade salesFacade;
 
@@ -16,7 +15,7 @@ public class SalesController {
         this.salesFacade = salesFacade;
     }
 
-    @PostMapping("/api/add-product/productId")
+    @PostMapping("/api/add-product/{productId}")
     public void addProductToCart(@PathVariable String productId) {
         String customerId = getCurrentCustomerId();
         salesFacade.addToCart(customerId, productId);

@@ -1,4 +1,6 @@
-package pl.dariuszewski.sales;
+package pl.dariuszewski.sales.cart;
+
+import pl.dariuszewski.sales.cart.Cart;
 
 import java.util.HashMap;
 import java.util.Optional;
